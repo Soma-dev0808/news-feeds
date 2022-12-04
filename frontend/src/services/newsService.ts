@@ -1,11 +1,14 @@
 import { getQueryParams } from "../utils/utils";
 
-import type { NewsFetchResult } from "../utils/types";
+import type {
+    NewsContentResult,
+    NewsFetchResult
+} from "../utils/types";
 
 const fetchNews = async () => {
     const queryParamObj = {
         q: 'tesla',
-        from: '2022-11-02',
+        from: '2022-11-04',
         sortBy: 'publishedAt',
         apiKey: import.meta.env.VITE_NEWS_APIKEY,
     };
@@ -22,7 +25,7 @@ const fetchNews = async () => {
     // })
     //     .then(res => res.json());
 
-    const res: NewsFetchResult = await fetch(`${import.meta.env.VITE_NEWS_APIURI}?${queryPrameters}`)
+    const res: NewsFetchResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/ttete`)
         .then(res => (res.json()))
         .catch(_ => { throw new Error('Error with news feed fetching'); });
 
@@ -33,6 +36,20 @@ const fetchNews = async () => {
     throw new Error('Error with news feed fetching');
 };
 
+const fetchNewsContent = async () => {
+    const res: NewsContentResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/content`)
+        .then(res => res.json());
+
+    console.log(res);
+
+    if (res.status === 'ok') {
+        return res;
+    }
+
+    throw new Error('Error with news feed fetching');
+};
+
 export {
-    fetchNews
+    fetchNews,
+    fetchNewsContent
 };
