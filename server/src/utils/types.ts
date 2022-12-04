@@ -23,25 +23,8 @@ interface NewsFetchResult extends FetchResult {
     totalResults: number;
 }
 
-interface NewsContentData {
-    title: string;
-    byline: string;
-    dir: string;
-    content: string;
-    textContent: string;
-    length: number;
-    excerpt: string;
-    siteName: string;
-}
-
-interface NewsContentResult extends FetchResult {
-    newsContent: NewsContentData | null;
-}
-
 export type {
     Source,
     News,
     NewsFetchResult,
-    NewsContentData,
-    NewsContentResult
 };
