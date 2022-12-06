@@ -1,19 +1,24 @@
 import { getQueryParams } from "../utils/utils";
 
 import type {
+    GetQueryParamsObj,
     NewsContentResult,
     NewsFetchResult
 } from "../utils/types";
 
-const fetchNews = async () => {
-    const queryParamObj = {
-        q: 'tesla',
-        from: '2022-11-04',
-        sortBy: 'publishedAt',
-        apiKey: import.meta.env.VITE_NEWS_APIKEY,
-    };
+const mockNewsFeeds = () => new Promise<NewsFetchResult>((res) => setTimeout(() => {
+    res({
+        status: 'ok',
+        articles: [],
+        totalResults: 0,
+    });
+}, 500));
 
-    const queryPrameters = getQueryParams(queryParamObj);
+const fetchNews = async (queryObj: GetQueryParamsObj) => {
+
+    const queryPrameters = getQueryParams(queryObj);
+
+    console.log(queryPrameters);
 
     // POST for fetch
     // const res = await fetch(`${import.meta.env.VITE_NEWS_APIURI}?${queryPrameters}`, {
@@ -25,7 +30,7 @@ const fetchNews = async () => {
     // })
     //     .then(res => res.json());
 
-    const res: NewsFetchResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/ttete`)
+    const res: NewsFetchResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds?${queryPrameters}`)
         .then(res => (res.json()))
         .catch(_ => { throw new Error('Error with news feed fetching'); });
 

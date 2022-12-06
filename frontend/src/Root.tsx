@@ -1,15 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import NewsContent from "./components/NewsContent";
 import NewsFeedsList from "./components/NewsFeedsList";
+import SectionLayout from "./components/SectionLayout";
 
 const Root = () => {
   return (
-    <div className="app-root">
-      <Routes>
-        <Route path="/" element={<NewsFeedsList />} />
-        <Route path="/news/content" element={<NewsContent />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<SectionLayout component={NewsFeedsList} />} />
+      <Route path="/news/content" element={<SectionLayout component={NewsContent} />} />
+    </Routes>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchNewsContent } from '../services/newsService';
+import { fetchNewsContent } from '../../services/newsService';
 
-import type { NewsContentData } from '../utils/types';
+import type { NewsContentData } from '../../utils/types';
 
 const NewsContent = () => {
     const [newsContent, setNewsContent] = useState<NewsContentData | null>();

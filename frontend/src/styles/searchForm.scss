@@ -1,0 +1,21 @@
+.search {
+    &-form {
+        width: 100%;
+    }
+
+    &-input-item {
+
+        & label {
+          font-weight: bold;  
+          margin-bottom: 10px;
+        }
+
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    &-search-button {
+        float: right;
+    }
+}

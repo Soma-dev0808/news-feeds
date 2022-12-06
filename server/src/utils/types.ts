@@ -23,8 +23,16 @@ interface NewsFetchResult extends FetchResult {
     totalResults: number;
 }
 
+interface NewsSearchQueryObj {
+    q: string;
+    from: string;
+    sortBy: string;
+    language: string;
+}
+
 export type {
     Source,
     News,
     NewsFetchResult,
+    NewsSearchQueryObj
 };
