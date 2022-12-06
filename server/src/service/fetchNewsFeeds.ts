@@ -1,19 +1,17 @@
 import axios from 'axios';
 import { JSDOM } from 'jsdom'; // parsing article HTML
 import { Readability } from '@mozilla/readability'; // parsing article HTML
-import { NewsFetchResult } from '../utils/types';
+import { NewsFetchResult, NewsSearchQueryObj } from '../utils/types';
 const NewsAPI = require('newsapi');
 
-const getNewsFeeds = async (): Promise<NewsFetchResult> => {
+const getNewsFeeds = async (queryObj: NewsSearchQueryObj): Promise<NewsFetchResult> => {
     try {
         const newsapi = new NewsAPI(process.env.NEWS_APIKEY);
 
         return newsapi.v2.everything({
-            q: 'bitcoin',
+            ...queryObj,
             sources: 'bbc-news,the-verge',
             domains: 'bbc.co.uk, techcrunch.com',
-            language: 'en',
-            sortBy: 'relevancy',
         });
 
     } catch (error) {

@@ -38,10 +38,15 @@ interface NewsContentResult extends FetchResult {
     newsContent: NewsContentData | null;
 }
 
+interface GetQueryParamsObj {
+    [key: string]: string;
+}
+
 export type {
     Source,
     News,
     NewsFetchResult,
     NewsContentData,
-    NewsContentResult
+    NewsContentResult,
+    GetQueryParamsObj
 };

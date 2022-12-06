@@ -22,7 +22,17 @@ app.use(function (req, res, next) {
 });
 
 app.get('/news-feeds', async (req, res) => {
-    const newsFeeds: NewsFetchResult = await getNewsFeeds();
+    const q = req.query.q as string;
+    const from = req.query.from as string;
+    const sortBy = req.query.sortBy as string;
+    const language = req.query.language as string;
+
+    const newsFeeds: NewsFetchResult = await getNewsFeeds({
+        q,
+        from,
+        sortBy,
+        language,
+    });
 
     if (newsFeeds.status !== 'ok') {
         res.status(500).send("Internal server error");
@@ -32,21 +42,21 @@ app.get('/news-feeds', async (req, res) => {
 });
 
 app.get('/news-feeds/content', async (req, res) => {
-    const newsFeeds: NewsFetchResult = await getNewsFeeds();
+    // const newsFeeds: NewsFetchResult = await getNewsFeeds();
 
-    if (newsFeeds.status !== 'ok') {
-        res.status(500).send("Internal server error");
-        throw new Error("Internal server error");
-    }
+    // if (newsFeeds.status !== 'ok') {
+    //     res.status(500).send("Internal server error");
+    //     throw new Error("Internal server error");
+    // }
 
-    if (newsFeeds.articles.length) {
-        const news = await getNewsContent(newsFeeds.articles[0].url);
-        const response = {
-            status: 'ok',
-            newsContent: news
-        };
-        res.send(response);
-    }
+    // if (newsFeeds.articles.length) {
+    //     const news = await getNewsContent(newsFeeds.articles[0].url);
+    //     const response = {
+    //         status: 'ok',
+    //         newsContent: news
+    //     };
+    //     res.send(response);
+    // }
 });
 
 app.listen(port, () => {
