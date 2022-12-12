@@ -42,21 +42,19 @@ app.get('/news-feeds', async (req, res) => {
 });
 
 app.get('/news-feeds/content', async (req, res) => {
-    // const newsFeeds: NewsFetchResult = await getNewsFeeds();
+    const urlForContent = req.query.contentUrl as string;
 
-    // if (newsFeeds.status !== 'ok') {
-    //     res.status(500).send("Internal server error");
-    //     throw new Error("Internal server error");
-    // }
+    if (urlForContent) {
+        const news = await getNewsContent(urlForContent);
+        const response = {
+            status: 'ok',
+            newsContent: news
+        };
+        res.send(response);
+        return;
+    }
 
-    // if (newsFeeds.articles.length) {
-    //     const news = await getNewsContent(newsFeeds.articles[0].url);
-    //     const response = {
-    //         status: 'ok',
-    //         newsContent: news
-    //     };
-    //     res.send(response);
-    // }
+    res.status(404).send();
 });
 
 app.listen(port, () => {
