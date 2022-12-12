@@ -18,8 +18,6 @@ const fetchNews = async (queryObj: GetQueryParamsObj) => {
 
     const queryPrameters = getQueryParams(queryObj);
 
-    console.log(queryPrameters);
-
     // POST for fetch
     // const res = await fetch(`${import.meta.env.VITE_NEWS_APIURI}?${queryPrameters}`, {
     //     method: 'POST',
@@ -41,11 +39,11 @@ const fetchNews = async (queryObj: GetQueryParamsObj) => {
     throw new Error('Error with news feed fetching');
 };
 
-const fetchNewsContent = async () => {
-    const res: NewsContentResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/content`)
-        .then(res => res.json());
+const fetchNewsContent = async (queryObj: GetQueryParamsObj) => {
+    const queryPrameters = getQueryParams(queryObj);
 
-    console.log(res);
+    const res: NewsContentResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/content?${queryPrameters}`)
+        .then(res => res.json());
 
     if (res.status === 'ok') {
         return res;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import type { News } from '../../utils/types';
 
@@ -7,23 +8,30 @@ const NewsFeedsItem: React.FC<Partial<News>> = ({
     title,
     publishedAt,
     content,
-    urlToImage
+    urlToImage,
+    url
 }) => {
     return (
         <li className='news-feed-item'>
-            <div>
-                <h2>{title}</h2>
-                <p>{publishedAt}</p>
-                <p>{content}</p>
-            </div>
+            <Link
+                to={`/news/content`}
+                className="news-feed-item-link"
+                state={{ contentUrl: url }}
+            >
+                <div>
+                    <h2>{title}</h2>
+                    <p>{publishedAt}</p>
+                    <p>{content}</p>
+                </div>
 
-            <figure className='news-feed-item-image-container'>
-                <img
-                    src={urlToImage}
-                    alt="new image"
-                    className='news-feed-item-image'
-                />
-            </figure>
+                <figure className='news-feed-item-image-container'>
+                    <img
+                        src={urlToImage}
+                        alt="new image"
+                        className='news-feed-item-image'
+                    />
+                </figure>
+            </Link>
         </li>
     );
 };

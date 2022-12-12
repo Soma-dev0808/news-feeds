@@ -1,23 +1,43 @@
 .news-feed {
         width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
 
         &-search-form {
             width: 30%;
-            margin: 60px 0;
+            margin-top: 150px;
+            margin-bottom: 30px;
+        }
+
+        &-list {
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 }
 
 .news-feed-item {
-    display: flex;
-    justify-content: space-between;
     list-style: none;
     padding: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.307);
+
+    &-link {
+        display: flex;
+        justify-content: space-between;
+        color: var(--clrWhite);
+        text-decoration: none;
+    }
+
+    &-link:hover {
+        text-decoration: underline;
+    }
 
     &-image-container{
         width: 100px;

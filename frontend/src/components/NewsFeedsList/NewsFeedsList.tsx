@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { fetchNews } from '../../services/newsService';
-import { getToday } from '../../utils/utils';
 
-import '../../styles/newsFeeds.scss';
 import type { News } from '../../utils/types';
 import NewsFeedsItem from './NewsFeedsItem';
 import SearchForm from '../SearchForm';
+import LoadingIndicator from '../LoadingIndicator';
+
+import '../../styles/newsFeeds.scss';
 
 const NewsFeedsList = () => {
     const [newsFeeds, setNewsFeeds] = useState<News[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleSearchClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -23,29 +25,33 @@ const NewsFeedsList = () => {
             language: 'en',
         };
 
-        fetchNews(queryParamObj).then(res => setNewsFeeds(res.articles));
+        setIsLoading(true);
+        fetchNews(queryParamObj).then(res => {
+            setNewsFeeds(res.articles);
+            setIsLoading(false);
+        });
     };
-
-    console.log(newsFeeds);
 
     return (
         <div className='news-feed'>
             <div className='news-feed-search-form'>
                 <SearchForm submitAction={handleSearchClick} />
             </div>
-            <ul>
-                {
-                    newsFeeds.map((nf, idx) => (
-                        <NewsFeedsItem
-                            key={idx}
-                            title={nf.title}
-                            publishedAt={nf.publishedAt}
-                            content={nf.content}
-                            urlToImage={nf.urlToImage}
-                        />
-                    ))
-                }
-            </ul>
+
+            {isLoading
+                ? <LoadingIndicator isOverlay={false} />
+                : <ul className='news-feed-list'>
+                    {
+                        newsFeeds.map((nf, idx) => (
+                            <NewsFeedsItem
+                                key={idx}
+                                {...nf}
+                            />
+                        ))
+                    }
+                </ul>
+            }
+
         </div>
     );
 };
