@@ -20,6 +20,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ submitAction }) => {
                 <input
                     id="keyword-input"
                     name='searchKeyword'
+                    placeholder='Search keyword'
                     type="text"
                 />
             </div>
@@ -36,6 +37,18 @@ const SearchForm: React.FC<SearchFormProps> = ({ submitAction }) => {
                     max={getToday()}
                 />
             </div>
+
+            <div className='search-input-item'>
+                <label htmlFor="sortBy">
+                    Sort by
+                </label>
+                <select id="sortBy" name="sortBy">
+                    <option value="publishedAt">PublishedAt</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="relevancy">Relevancy</option>
+                </select>
+            </div>
+
             <button type='submit' className='search-search-button'>
                 Search
             </button>

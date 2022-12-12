@@ -1,25 +1,56 @@
+@import './common.scss';
+
 .news-feed {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-search-form {
+        width: 40%;
+        margin-top: 100px;
+        margin-bottom: 30px;
+
+        /* Medium devices */
+        @media screen and (max-width: 767.98px) {
+            margin-top: 50px;
+            width: 60%;
+        }
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            width: 80%;
+        }
+    }
+
+    &-number-of-items {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        &-search-form {
-            width: 30%;
-            margin-top: 150px;
-            margin-bottom: 30px;
+        & p {
+            float: right;
+        }
+    }
+
+    &-list {
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
         }
 
-        &-list {
-            overflow-y: scroll;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            padding: 0;
         }
+    }
 }
 
 .news-feed-item {
@@ -27,29 +58,63 @@
     padding: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.307);
+    font-size: inherit;
 
     &-link {
         display: flex;
         justify-content: space-between;
-        color: var(--clrWhite);
+        color: $clrWhite;
         text-decoration: none;
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            flex-direction: column;
+        }
     }
 
     &-link:hover {
         text-decoration: underline;
     }
 
-    &-image-container{
+    &-image-container {
         width: 100px;
         height: 100px;
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100px;
+        }
     }
 
-    &-image{
+    &-image {
         border-radius: 10px;
         width: 100px;
         height: 100px;
         object-fit: cover;
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            width: 100%;
+            height: 100px;
+        }
     }
 }
 
 
+/* Larger than Extra large devices */
+@media screen and (min-width: 1440px) {}
+
+/* Extra large devices */
+@media screen and (max-width: 1439px) {}
+
+/* Large devices */
+@media screen and (max-width: 991.98px) {}
+
+/* Medium devices */
+@media screen and (max-width: 767.98px) {}
+
+/* Small devices */
+@media screen and (max-width: 575.98px) {}
