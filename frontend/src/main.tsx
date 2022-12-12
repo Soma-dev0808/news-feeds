@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import './index.css';
+import './index.scss';
 
 import SectionLayout from './components/SectionLayout';
 import NewsFeedsList from './components/NewsFeedsList';

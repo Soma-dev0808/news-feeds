@@ -17,11 +17,12 @@ const NewsFeedsList = () => {
 
         const searchKeyword = e.currentTarget.searchKeyword.value;
         const dateFrom = e.currentTarget.dateFrom.value;
+        const sortBy = e.currentTarget.sortBy.value;
 
         const queryParamObj = {
             q: searchKeyword,
             from: dateFrom,
-            sortBy: 'publishedAt',
+            sortBy: sortBy,
             language: 'en',
         };
 
@@ -40,16 +41,25 @@ const NewsFeedsList = () => {
 
             {isLoading
                 ? <LoadingIndicator isOverlay={false} />
-                : <ul className='news-feed-list'>
+                : <>
                     {
-                        newsFeeds.map((nf, idx) => (
-                            <NewsFeedsItem
-                                key={idx}
-                                {...nf}
-                            />
-                        ))
+                        newsFeeds.length > 0 && (
+                            <div className='news-feed-number-of-items'>
+                                <p>{newsFeeds.length} items found</p>
+                            </div>
+                        )
                     }
-                </ul>
+                    <ul className='news-feed-list'>
+                        {
+                            newsFeeds.map((nf, idx) => (
+                                <NewsFeedsItem
+                                    key={idx}
+                                    {...nf}
+                                />
+                            ))
+                        }
+                    </ul>
+                </>
             }
 
         </div>

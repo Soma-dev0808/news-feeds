@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import type { News } from '../../utils/types';
+import { removeContentCharInfo, timeModifier } from '../../utils/utils';
 
 
 const NewsFeedsItem: React.FC<Partial<News>> = ({
@@ -20,8 +21,8 @@ const NewsFeedsItem: React.FC<Partial<News>> = ({
             >
                 <div>
                     <h2>{title}</h2>
-                    <p>{publishedAt}</p>
-                    <p>{content}</p>
+                    <p>{timeModifier(publishedAt)}</p>
+                    <p>{removeContentCharInfo(content)}</p>
                 </div>
 
                 <figure className='news-feed-item-image-container'>

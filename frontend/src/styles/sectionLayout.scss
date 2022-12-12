@@ -2,4 +2,9 @@
     width: 80%;
     height: 100%;
     margin: 0 auto;
+
+    /* Small devices */
+    @media screen and (max-width: 575.98px) {
+        width: 95%;
+    }
 }

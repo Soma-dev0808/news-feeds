@@ -1,21 +1,56 @@
+@import './common.scss';
+
 .search {
     &-form {
         width: 100%;
+
     }
 
     &-input-item {
-
-        & label {
-          font-weight: bold;  
-          margin-bottom: 10px;
-        }
-
+        font-size: clamp(14px, 2vw, 18px);
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            margin-bottom: 10px;
+        }
+
+        & label {
+            font-weight: bold;
+            margin-bottom: 10px;
+
+            /* Small devices */
+            @media screen and (max-width: 575.98px) {
+                margin-bottom: 5px;
+            }
+        }
+
+        & input,
+        select {
+            font-size: inherit;
+            padding: clamp(6px, 2vw, 8px);
+            outline: 0;
+            border: 0;
+            border-bottom: solid 1px $clrWhiteDrk;
+            background: transparent;
+            transition: border-bottom .3s;
+
+            &:focus {
+                border-color: $clrWhite;
+            }
+        }
     }
 
     &-search-button {
         float: right;
+        background-color: $clrPrimary;
+        transition: background-color .3s;
+        @include button-md;
+
+        &:hover {
+            background-color: $clrPrimaryDrk;
+        }
     }
 }

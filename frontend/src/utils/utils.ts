@@ -30,7 +30,20 @@ const monthMinusOne = (month: number): number => {
     return month - 1;
 };
 
+const timeModifier = (timeTomodify?: string): string => {
+    if (!timeTomodify) return '';
+    return timeTomodify.replace('T', ' ').replace('Z', '');
+};
+
+const removeContentCharInfo = (content?: string): string => {
+    if (!content) return '';
+    const str = /\[\+\d*\schars\]/;
+    return content.replace(str, '');
+};
+
 export {
     getQueryParams,
     getToday,
+    timeModifier,
+    removeContentCharInfo
 };
