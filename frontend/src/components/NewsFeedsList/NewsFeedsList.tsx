@@ -11,6 +11,7 @@ import '../../styles/newsFeeds.scss';
 const NewsFeedsList = () => {
     const [newsFeeds, setNewsFeeds] = useState<News[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
     const handleSearchClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -27,17 +28,38 @@ const NewsFeedsList = () => {
         };
 
         setIsLoading(true);
+        setIsSearchOpen(false);
+
         fetchNews(queryParamObj).then(res => {
             setNewsFeeds(res.articles);
             setIsLoading(false);
         });
     };
 
+    const handleSearchFormOpen = () => {
+        setIsSearchOpen(prev => !prev);
+    };
+
     return (
         <div className='news-feed'>
-            <div className='news-feed-search-form'>
+            <div className={`news-feed-search-form ${isSearchOpen && 'formactive'}`}>
+                <button
+                    type='button'
+                    className='news-feed-search-form-closeBtn'
+                    onClick={handleSearchFormOpen}
+                >
+                    X
+                </button>
                 <SearchForm submitAction={handleSearchClick} />
             </div>
+
+            <button
+                type='button'
+                className='news-feed-search-form-searchBtn'
+                onClick={handleSearchFormOpen}
+            >
+                search
+            </button>
 
             {isLoading
                 ? <LoadingIndicator isOverlay={false} />
