@@ -17,7 +17,11 @@ const NewsFeedsItem: React.FC<Partial<News>> = ({
             <Link
                 to={`/news/content`}
                 className="news-feed-item-link"
-                state={{ contentUrl: url }}
+                state={{
+                    contentUrl: url,
+                    contentImgUrl: urlToImage,
+                    publishedAt: timeModifier(publishedAt),
+                }}
             >
                 <div>
                     <h2>{title}</h2>
