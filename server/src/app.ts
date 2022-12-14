@@ -25,8 +25,6 @@ app.get('/news-feeds', async (req, res) => {
     const sortBy = req.query.sortBy as string;
     const language = req.query.language as string;
 
-    console.log(q, from, sortBy, language);
-
     const newsFeeds: NewsFetchResult = await getNewsFeeds({
         q,
         from,
@@ -58,7 +56,6 @@ app.get('/news-feeds/content', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(process.env.ALLOW_CORS);
     console.log(`Server running at http://localhost:${port}/`);
 });
 
