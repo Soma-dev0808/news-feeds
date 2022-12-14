@@ -2,30 +2,30 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { fetchNewsContent } from '../../services/newsService';
 
-import type { NewsContentData } from '../../utils/types';
-import LoadingIndicator from '../LoadingIndicator';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 import '../../styles/newsContent.scss';
+import type { NewsContentData } from '../../utils/types';
+import type { GenericCommonActionType } from '../../app/configureStore';
 
-const NewsContent = () => {
-    const [newsContent, setNewsContent] = useState<NewsContentData | null>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+interface NewsContentProps {
+    isFetching: boolean;
+    newsContent: NewsContentData | null;
+    fetchNewsContentAction: GenericCommonActionType;
+}
+
+const NewsContent: React.FC<NewsContentProps> = ({
+    isFetching,
+    newsContent,
+    fetchNewsContentAction,
+}) => {
     const _location = useLocation();
-
     const { contentUrl, contentImgUrl, publishedAt } = _location.state;
 
     useEffect(() => {
         if (!contentUrl) return;
-        const newContentObj = {
-            contentUrl,
-        };
 
-        setIsLoading(true);
-        fetchNewsContent(newContentObj)
-            .then(res => {
-                setNewsContent(res.newsContent);
-                setIsLoading(false);
-            }).catch();
+        fetchNewsContentAction({ contentUrl });
     }, []);
 
     if (!contentUrl) (<div> Something wrong with loading content..... </div>);
@@ -39,7 +39,7 @@ const NewsContent = () => {
 
     return (
         <>
-            {isLoading
+            {isFetching
                 ? <LoadingIndicator isOverlay />
                 : <div className='news-content'>
                     {newsContent && (

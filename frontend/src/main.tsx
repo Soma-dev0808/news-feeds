@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { store } from './app/configureStore';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.scss';
 
 import SectionLayout from './components/SectionLayout';
-import Lp from './components/Lp';
-import Search from './components/Search';
-import NewsFeedsList from './components/NewsFeedsList';
-import NewsContent from './components/NewsContent';
+import Lp from './pages/Lp';
+import Search from './pages/Search';
+import NewsFeedsList from './pages/NewsFeedsList';
+import NewsContent from './pages/NewsContent';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
