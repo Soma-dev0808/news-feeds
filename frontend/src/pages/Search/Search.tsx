@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import SearchForm from '../SearchForm';
+import SearchForm from '../../components/SearchForm';
 
 import '../../styles/searchPage.scss';
 
