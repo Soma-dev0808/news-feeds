@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.PORT_NUMBER || 5001;
 
 var corsOptions = {
-    origin: 'http://127.0.0.1:5173',
+    origin: process.env.ALLOW_CORS,
 };
 
 app.use(function (req, res, next) {
