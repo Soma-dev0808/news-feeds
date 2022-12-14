@@ -50,12 +50,23 @@ $searchPanelCrl: #3d3d3d;
         }
 
         &-searchBtn {
+            margin-top: 20px;
             @include button-md;
+            @include fadeUpAnimation;
         }
+    }
+
+    &-no-content {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include fadeUpAnimation;
     }
 
     &-number-of-items {
         width: 100%;
+        @include fadeUpAnimation;
 
         & p {
             float: right;
@@ -64,6 +75,7 @@ $searchPanelCrl: #3d3d3d;
 
     &-list {
         overflow-y: scroll;
+        @include fadeUpAnimation;
 
         &::-webkit-scrollbar {
             display: none;
@@ -130,19 +142,3 @@ $searchPanelCrl: #3d3d3d;
         }
     }
 }
-
-
-/* Larger than Extra large devices */
-@media screen and (min-width: 1440px) {}
-
-/* Extra large devices */
-@media screen and (max-width: 1439px) {}
-
-/* Large devices */
-@media screen and (max-width: 991.98px) {}
-
-/* Medium devices */
-@media screen and (max-width: 767.98px) {}
-
-/* Small devices */
-@media screen and (max-width: 575.98px) {}

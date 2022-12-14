@@ -1,6 +1,8 @@
 @import './common.scss';
 
 .news-content {
+    @include fadeUpAnimation;
+
     &-img {
         width: 100%;
         max-height: 300px;

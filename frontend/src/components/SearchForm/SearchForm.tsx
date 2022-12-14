@@ -10,12 +10,12 @@ interface SearchFormProps {
 const SearchForm: React.FC<SearchFormProps> = ({ submitAction }) => {
     return (
         <form
-            className='search-form'
+            className='search-form '
             onSubmit={submitAction}
         >
             <div className='search-input-item'>
                 <label htmlFor="keyword-input">
-                    Keyword
+                    Search Keyword
                 </label>
                 <input
                     id="keyword-input"
