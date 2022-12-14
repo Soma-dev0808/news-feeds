@@ -1,15 +1,13 @@
-import * as http from 'http';
-import express, { Express } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import { getNewsContent, getNewsFeeds } from './service/fetchNewsFeeds';
 import { NewsFetchResult } from './utils/types';
-import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
-const port = process.env.PORT_NUMBER || 5001;
+const port = process.env.PORT || 5001;
 
 var corsOptions = {
     origin: process.env.ALLOW_CORS,
