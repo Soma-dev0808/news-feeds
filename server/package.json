@@ -8,7 +8,7 @@
     "build": "rimraf ./build && tsc",
     "production": "npm run build && node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node build/server.js",
+    "start": "node build/app.js",
     "postinstall": "tsc"
   },
   "author": "",
