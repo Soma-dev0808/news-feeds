@@ -1,0 +1,70 @@
+@import './common.scss';
+
+.lp {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    &-title {
+        margin-bottom: 100px;
+        font-size: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 1px solid rgba(255, 255, 255, .5);
+        animation: typing 2s steps(16, end) forwards,
+            blink .9s step-end infinite;
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 9em;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-right-color: transparent;
+            }
+        }
+
+        /* Extra large devices */
+        @media screen and (max-width: 1439px) {
+            font-size: 100px;
+        }
+
+        /* Large devices */
+        @media screen and (max-width: 991.98px) {
+            font-size: 70px;
+            margin-bottom: 80px;
+        }
+
+        /* Medium devices */
+        @media screen and (max-width: 767.98px) {
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Small devices */
+        @media screen and (max-width: 575.98px) {
+            font-size: 30px;
+        }
+    }
+
+    &-startBtn {
+        @include button-lg;
+        font-size: clamp(20px, 3vw, 30px);
+        background-color: $clrPrimary;
+
+        &:hover {
+            background-color: $clrPrimaryDrk;
+        }
+    }
+}

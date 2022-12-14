@@ -5,12 +5,22 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.scss';
 
 import SectionLayout from './components/SectionLayout';
+import Lp from './components/Lp';
+import Search from './components/Search';
 import NewsFeedsList from './components/NewsFeedsList';
 import NewsContent from './components/NewsContent';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <SectionLayout component={Lp} />
+  },
+  {
+    path: "/news/search",
+    element: <SectionLayout component={Search} />
+  },
+  {
+    path: "/news/list",
     element: <SectionLayout component={NewsFeedsList} />
   },
   {

@@ -41,7 +41,7 @@ const NewsContent = () => {
         <>
             {isLoading
                 ? <LoadingIndicator isOverlay />
-                : <div>
+                : <div className='news-content'>
                     {newsContent && (
                         <>
                             <h1>{newsContent.title}</h1>
