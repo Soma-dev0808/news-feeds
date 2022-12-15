@@ -25,7 +25,7 @@ const NewsFeedsList: React.FC<NewsFeedsListProps> = ({
     const _location = useLocation();
     const navigate = useNavigate();
 
-    const { searchCond } = _location.state;
+    const searchCond = _location?.state?.searchCond;
 
     useEffect(() => {
         // clear _location.state
