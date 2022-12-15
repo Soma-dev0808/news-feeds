@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/configureStore';
 import { fetchNews } from '../services/newsService';
 
@@ -28,7 +28,11 @@ const fetchNewsList = createAsyncThunk<{ newsList: News[]; }, { searchParamObj: 
 export const newsListSlice = createSlice({
     name: 'newsList',
     initialState,
-    reducers: {},
+    reducers: {
+        setFavListNews: (state, action: PayloadAction<News[]>) => {
+            state.newsList = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchNewsList.pending, (state) => {
@@ -49,5 +53,9 @@ export const newsListSlice = createSlice({
 
 const selectNewsList = (state: RootState) => state.newsListState;
 
-export { selectNewsList, fetchNewsList };
+const { setFavListNews } = newsListSlice.actions;
+type SetFavListNews = typeof setFavListNews;
+
+export { selectNewsList, fetchNewsList, setFavListNews };
+export type { SetFavListNews };
 export default newsListSlice.reducer;

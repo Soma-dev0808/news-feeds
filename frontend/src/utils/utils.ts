@@ -41,9 +41,14 @@ const removeContentCharInfo = (content?: string): string => {
     return content.replace(str, '');
 };
 
+const compareObjs = (c1: { [key: string]: any; }, c2: { [key: string]: any; }) => {
+    return Object.keys(c1).every(key => c1[key] === c2[key]);
+};
+
 export {
     getQueryParams,
     getToday,
     timeModifier,
-    removeContentCharInfo
+    removeContentCharInfo,
+    compareObjs
 };
