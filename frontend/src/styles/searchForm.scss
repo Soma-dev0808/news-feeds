@@ -3,7 +3,6 @@
 .search {
     &-form {
         width: 100%;
-
     }
 
     &-input-item {
@@ -39,8 +38,13 @@
             border-radius: 0;
             color: $clrWhite;
 
-            &:focus {
-                border-color: $clrWhite;
+            @media (prefers-color-scheme: light) {
+                border-bottom: solid 1px rgba(3, 3, 3);
+                color: $clrDrkMode;
+
+                &:focus {
+                    border-color: rgba(3, 3, 3, 0.479);
+                }
             }
         }
     }

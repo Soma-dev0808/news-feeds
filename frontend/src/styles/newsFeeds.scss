@@ -24,6 +24,11 @@ $searchPanelCrl: #3d3d3d;
             top: 0;
         }
 
+        @media (prefers-color-scheme: light) {
+            background: #ffffff;
+            box-shadow: 0px 0px 4px #222;
+        }
+
         // &.formactive .news-feed-search-form-list {
         //     position: fixed;
         //     z-index: 999;
@@ -47,12 +52,21 @@ $searchPanelCrl: #3d3d3d;
             position: absolute;
             top: 10px;
             right: 10px;
+
+            @media (prefers-color-scheme: light) {
+                color: $clrDrkMode;
+            }
+
         }
 
         &-searchBtn {
             margin-top: 20px;
             @include button-md;
             @include fadeUpAnimation;
+
+            @media (prefers-color-scheme: light) {
+                background-color: $clrBgDflt;
+            }
         }
     }
 
@@ -105,6 +119,10 @@ $searchPanelCrl: #3d3d3d;
         justify-content: space-between;
         color: $clrWhite;
         text-decoration: none;
+
+        @media (prefers-color-scheme: light) {
+            color: $clrDrkMode;
+        }
 
         /* Small devices */
         @media screen and (max-width: 575.98px) {

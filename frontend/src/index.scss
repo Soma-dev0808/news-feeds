@@ -37,7 +37,7 @@ h1 {
 /* Detect if a user has requested light or dark color themes */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: $clrDrkMode;
     background-color: #ffffff;
   }
 
@@ -46,7 +46,7 @@ h1 {
   }
 
   button {
-    color: #213547;
+    color: $clrWhite;
     background-color: #f9f9f9;
   }
 }
