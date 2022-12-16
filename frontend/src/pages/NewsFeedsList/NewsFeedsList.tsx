@@ -4,10 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import NewsFeedsItem from '../../components/NewsFeedsItem';
 import SearchForm from '../../components/SearchForm';
 import LoadingIndicator from '../../components/LoadingIndicator';
+import { removeContentCharInfo, timeModifier } from '../../utils/utils';
 
 import type { GetQueryParamsObj, News } from '../../utils/types';
 import type { GenericCommonActionType } from '../../app/configureStore';
-
 import '../../styles/newsFeeds.scss';
 
 interface NewsFeedsListProps {
@@ -121,6 +121,8 @@ const NewsFeedsList: React.FC<NewsFeedsListProps> = ({
                                 <NewsFeedsItem
                                     key={idx}
                                     {...nf}
+                                    publishedAt={timeModifier(nf.publishedAt)}
+                                    content={removeContentCharInfo(nf.content)}
                                 />
                             ))
                         }

@@ -24,11 +24,8 @@ const NewsContent: React.FC<NewsContentProps> = ({
 
     useEffect(() => {
         if (!contentUrl) return;
-
         fetchNewsContentAction({ contentUrl });
     }, []);
-
-    if (!contentUrl) (<div> Something wrong with loading content..... </div>);
 
     // get first string of text content
     const [firstPhrase, content] = useMemo(() => {
@@ -36,6 +33,8 @@ const NewsContent: React.FC<NewsContentProps> = ({
         const _firstPhrase = newsContent.textContent.split(' ')[0];
         return [_firstPhrase, newsContent.textContent.replace(_firstPhrase, '')];
     }, [newsContent]);
+
+    if (!contentUrl) return (<div> Something wrong with loading content..... </div>);
 
     return (
         <>
