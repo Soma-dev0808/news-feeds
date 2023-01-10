@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { useLocation } from "react-router-dom";
-import useNewsContent from '../../../hooks/useNewsContent';
+import useNewsContent from 'hooks/useNewsContent';
 
 import LoadingIndicator from 'components/ui/LoadingIndicator';
 import { getFirstPhrase } from 'utils/utils';
 
-import '../../../styles/newsContent.scss';
+import 'styles/newsContent.scss';
 
 interface NewsContentProps { }
 

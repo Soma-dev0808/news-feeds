@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import '../../../styles/loadingIndicator.scss';
+
+import 'styles/loadingIndicator.scss';
 
 const LoadingIndicator: FC<{ isOverlay: boolean; }> = ({ isOverlay }) => {
 

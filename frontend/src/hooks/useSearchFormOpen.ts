@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/app/hook';
-import { selectNewsList, newsListReducerActions } from '../redux/feature/newsListSlice';
+import { useAppDispatch, useAppSelector } from 'redux/app/hook';
+import { selectNewsList, newsListReducerActions } from 'redux/feature/newsListSlice';
 
 const useSearchFormOpen = () => {
     const dispatch = useAppDispatch();

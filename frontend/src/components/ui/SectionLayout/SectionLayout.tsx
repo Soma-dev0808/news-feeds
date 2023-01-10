@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../../styles/sectionLayout.scss';
+import 'styles/sectionLayout.scss';
 
 interface SectionLayoutProps {
     component: React.ElementType;

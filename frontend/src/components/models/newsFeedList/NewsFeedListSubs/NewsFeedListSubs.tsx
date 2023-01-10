@@ -1,5 +1,5 @@
 import React from 'react';
-import { News } from '../../../../utils/types';
+import { News } from 'utils/types';
 
 const NewsFeedListSubContents: React.FC<{ newsList: News[] | null; }> = ({ newsList }) => {
     const renderSearchInstruction = () => {

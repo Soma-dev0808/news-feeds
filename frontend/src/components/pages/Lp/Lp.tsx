@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../../../styles/lp.scss';
+import 'styles/lp.scss';
 
 const Lp = () => {
 

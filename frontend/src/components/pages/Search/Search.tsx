@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import SearchForm from '../../models/search/SearchForm';
+import SearchForm from 'components/models/search/SearchForm';
 
-import '../../../styles/searchPage.scss';
+import 'styles/searchPage.scss';
 
 const Search = () => {
     const navigate = useNavigate();

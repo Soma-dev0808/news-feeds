@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useNewsFeed from '../../../hooks/useNewsFeed';
-import useSearchFormOpen from '../../../hooks/useSearchFormOpen';
+import useNewsFeed from 'hooks/useNewsFeed';
+import useSearchFormOpen from 'hooks/useSearchFormOpen';
 
-import LoadingIndicator from '../../ui/LoadingIndicator';
-import NewsFeedsItem from '../../models/newsFeedList/NewsFeedsItem';
-import SearchForm from '../../models/search/SearchForm';
-import NewsFeedListSubContents from '../../models/newsFeedList/NewsFeedListSubs';
-import { SearchFormCloseButton, SearchFormOpenButton } from '../../models/newsFeedList/NewsFeedListButtons';
-import { removeContentCharInfo, timeModifier } from '../../../utils/utils';
+import LoadingIndicator from 'components/ui/LoadingIndicator';
+import NewsFeedsItem from 'components/models/newsFeedList/NewsFeedsItem';
+import SearchForm from 'components/models/search/SearchForm';
+import NewsFeedListSubContents from 'components/models/newsFeedList/NewsFeedListSubs';
+import { SearchFormCloseButton, SearchFormOpenButton } from 'components/models/newsFeedList/NewsFeedListButtons';
+import { removeContentCharInfo, timeModifier } from 'utils/utils';
 
-import type { GetQueryParamsObj } from '../../../utils/types';
-import '../../../styles/newsFeeds.scss';
+import type { GetQueryParamsObj } from 'utils/types';
+import 'styles/newsFeeds.scss';
 
 interface NewsFeedsListProps { }
 

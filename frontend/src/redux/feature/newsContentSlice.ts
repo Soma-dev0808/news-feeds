@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../app/configureStore';
-import { backend } from '../../repositories';
+import { RootState } from 'redux/app/configureStore';
+import { backend } from 'repositories';
 
-import type { NewsContentData, GetQueryParamsObj } from '../../utils/types';
+import type { NewsContentData, GetQueryParamsObj } from 'utils/types';
 
 interface NewsContentState {
     isFetching: boolean,

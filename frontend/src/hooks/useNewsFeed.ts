@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/app/hook';
-import { newsListReducerActions, selectNewsList } from '../redux/feature/newsListSlice';
-import { GetQueryParamsObj } from '../utils/types';
+import { useAppDispatch, useAppSelector } from 'redux/app/hook';
+import { newsListReducerActions, selectNewsList } from 'redux/feature/newsListSlice';
+import { GetQueryParamsObj } from 'utils/types';
 
 const useNewsFeed = () => {
     const { isFetching, newsList } = useAppSelector(selectNewsList);
