@@ -1,7 +1,7 @@
 import React from 'react';
-import { getToday } from '../../utils/utils';
+import { getToday } from '../../../../utils/utils';
 
-import '../../styles/searchForm.scss';
+import '../../../../styles/searchForm.scss';
 
 interface SearchFormProps {
     submitAction: (event: React.FormEvent<HTMLFormElement>) => void;

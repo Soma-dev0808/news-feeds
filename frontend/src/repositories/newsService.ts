@@ -25,7 +25,8 @@ const fetchNewsContent = async (queryObj: GetQueryParamsObj) => {
     const queryPrameters = getQueryParams(queryObj);
 
     const res: NewsContentResult = await fetch(`${import.meta.env.VITE_NODEJS_SERVER}/news-feeds/content?${queryPrameters}`)
-        .then(res => res.json());
+        .then(res => res.json())
+        .catch(_ => { throw new Error('Error with news content fetching'); });
 
     if (res.status !== 'ok') {
         throw new Error('Error with news feed fetching');

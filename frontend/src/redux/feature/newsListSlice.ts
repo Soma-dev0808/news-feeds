@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/configureStore';
 import { backend } from '../../repositories';
 
@@ -6,13 +6,15 @@ import type { GetQueryParamsObj, News } from '../../utils/types';
 
 interface NewsListState {
     isFetching: boolean,
-    newsList: News[] | null;
-    error: any;
+    newsList: News[] | null,
+    isSearchFormOpen: boolean,
+    error: any,
 };
 
 const initialState: NewsListState = {
     isFetching: false,
     newsList: null,
+    isSearchFormOpen: false,
     error: null,
 };
 
@@ -24,12 +26,17 @@ const fetchNewsList = createAsyncThunk<{ newsList: News[]; }, { searchParamObj: 
     }
 );
 
-const newsListAsyncActions = { fetchNewsList };
-
 export const newsListSlice = createSlice({
     name: 'newsList',
     initialState,
-    reducers: {},
+    reducers: {
+        toggleSearchForm: (state, action: PayloadAction<boolean | undefined>) => {
+            if (!action.payload) state.isSearchFormOpen = !state.isSearchFormOpen;
+            else {
+                state.isSearchFormOpen = action.payload;
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchNewsList.pending, (state) => {
@@ -50,5 +57,7 @@ export const newsListSlice = createSlice({
 
 const selectNewsList = (state: RootState) => state.newsListState;
 
-export { selectNewsList, newsListAsyncActions };
+const { toggleSearchForm } = newsListSlice.actions;
+const newsListReducerActions = { fetchNewsList, toggleSearchForm };
+export { selectNewsList, newsListReducerActions };
 export default newsListSlice.reducer;

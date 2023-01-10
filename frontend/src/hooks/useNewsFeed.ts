@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/app/hook';
-import { newsListAsyncActions, selectNewsList } from '../redux/feature/newsListSlice';
+import { newsListReducerActions, selectNewsList } from '../redux/feature/newsListSlice';
 import { GetQueryParamsObj } from '../utils/types';
 
 const useNewsFeed = () => {
@@ -9,7 +9,7 @@ const useNewsFeed = () => {
 
     const fetchNewsList = useCallback(
         (searchParamObj: GetQueryParamsObj) => {
-            dispatch(newsListAsyncActions.fetchNewsList({ searchParamObj }));
+            dispatch(newsListReducerActions.fetchNewsList({ searchParamObj }));
         }, [dispatch]);
 
 

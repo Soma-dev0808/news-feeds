@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import type { News } from '../../utils/types';
+import type { News } from '../../../../utils/types';
 
 const NewsFeedsItem: React.FC<Partial<News>> = ({
     title,
