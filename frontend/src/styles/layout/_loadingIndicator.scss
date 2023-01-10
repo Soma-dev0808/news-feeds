@@ -1,9 +1,9 @@
-@import './common.scss';
+@use '../abstracts' as a;
 
 .loading-indicator {
 
     &-container {
-        background: $clrBgDflt;
+        background: a.$clrBgDflt;
         width: 100%;
         display: flex;
         flex-grow: 1;
@@ -16,7 +16,7 @@
             top: 0;
             height: 100vh;
             z-index: 99;
-            background-color: $clrBgDfltTrans;
+            background-color: a.$clrBgDfltTrans;
 
             @media (prefers-color-scheme: light) {
                 background-color: transparent;
@@ -40,7 +40,7 @@
     &-bar {
         width: 10px;
         height: 70px;
-        background: $clrBgDflt;
+        background: a.$clrBgDflt;
         display: inline-block;
         transform-origin: bottom center;
         border-top-right-radius: 20px;
@@ -60,7 +60,7 @@
 
         50% {
             transform: scaleY(1);
-            background: $clrPrimary;
+            background: a.$clrPrimary;
         }
 
         100% {

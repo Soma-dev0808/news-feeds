@@ -11,7 +11,6 @@ import { SearchFormCloseButton, SearchFormOpenButton } from 'components/models/n
 import { removeContentCharInfo, timeModifier } from 'utils/utils';
 
 import type { GetQueryParamsObj } from 'utils/types';
-import 'styles/newsFeeds.scss';
 
 interface NewsFeedsListProps { }
 

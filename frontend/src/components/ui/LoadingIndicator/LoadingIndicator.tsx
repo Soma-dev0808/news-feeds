@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import 'styles/loadingIndicator.scss';
-
 const LoadingIndicator: FC<{ isOverlay: boolean; }> = ({ isOverlay }) => {
 
     const loadingContainer = `loading-indicator-container${isOverlay ? '-overlay' : ''}`;

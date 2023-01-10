@@ -1,4 +1,5 @@
-@import './common.scss';
+@use '../abstracts' as a;
+@use '../mixin' as m;
 
 .search {
     &-form {
@@ -32,15 +33,15 @@
             padding: clamp(6px, 2vw, 8px);
             outline: 0;
             border: 0;
-            border-bottom: solid 1px $clrWhiteDrk;
+            border-bottom: solid 1px a.$clrWhiteDrk;
             background: transparent;
             transition: border-bottom .3s;
             border-radius: 0;
-            color: $clrWhite;
+            color: a.$clrWhite;
 
             @media (prefers-color-scheme: light) {
                 border-bottom: solid 1px rgba(3, 3, 3);
-                color: $clrDrkMode;
+                color: a.$clrDrkMode;
 
                 &:focus {
                     border-color: rgba(3, 3, 3, 0.479);
@@ -51,12 +52,12 @@
 
     &-search-button {
         float: right;
-        background-color: $clrPrimary;
+        background-color: a.$clrPrimary;
         transition: background-color .3s;
-        @include button-md;
+        @include m.button-md;
 
         &:hover {
-            background-color: $clrPrimaryDrk;
+            background-color: a.$clrPrimaryDrk;
         }
     }
 }

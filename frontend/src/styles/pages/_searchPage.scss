@@ -1,4 +1,4 @@
-@import './common.scss';
+@use '../mixin' as m;
 
 .search-page {
 
@@ -9,7 +9,7 @@
         justify-content: center;
         align-items: center;
 
-        @include fadeUpAnimation;
+        @include m.fadeUpAnimation;
     }
 
 

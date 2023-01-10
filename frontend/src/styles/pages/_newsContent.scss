@@ -1,7 +1,9 @@
-@import './common.scss';
+@use '../abstracts' as a;
+@use '../mixin/' as m;
+
 
 .news-content {
-    @include fadeUpAnimation;
+    @include m.fadeUpAnimation;
 
     &-img {
         width: 100%;
@@ -23,6 +25,6 @@
 
     &-firstphrase {
         font-size: 1.4em;
-        color: $clrPrimary;
+        color: a.$clrPrimary;
     }
 }

@@ -5,8 +5,6 @@ import useNewsContent from 'hooks/useNewsContent';
 import LoadingIndicator from 'components/ui/LoadingIndicator';
 import { getFirstPhrase } from 'utils/utils';
 
-import 'styles/newsContent.scss';
-
 interface NewsContentProps { }
 
 const NewsContent: React.FC<NewsContentProps> = () => {

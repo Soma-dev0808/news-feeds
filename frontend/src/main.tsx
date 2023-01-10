@@ -10,7 +10,7 @@ import Search from './components/pages/Search';
 import NewsFeedsList from './components/pages/NewsFeedsList';
 import NewsContent from './components/pages/NewsContent';
 
-import './index.scss';
+import 'styles/index.scss';
 
 const router = createBrowserRouter([
   {

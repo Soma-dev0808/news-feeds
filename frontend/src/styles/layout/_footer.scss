@@ -1,10 +1,10 @@
-@import './common.scss';
+@use '../abstracts' as a;
 
 $footerBrdrClr: #424040;
 
 .footer {
     &-container {
-        color: $clrWhiteDrk;
+        color: a.$clrWhiteDrk;
         width: 100%;
         height: 70px;
         display: flex;
