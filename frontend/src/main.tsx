@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { store } from './app/configureStore';
+import { store } from './redux/app/configureStore';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import './index.scss';
+import SectionLayout from './components/ui/SectionLayout';
+import Lp from './components/pages/Lp';
+import Search from './components/pages/Search';
+import NewsFeedsList from './components/pages/NewsFeedsList';
+import NewsContent from './components/pages/NewsContent';
 
-import SectionLayout from './components/SectionLayout';
-import Lp from './pages/Lp';
-import Search from './pages/Search';
-import NewsFeedsList from './pages/NewsFeedsList';
-import NewsContent from './pages/NewsContent';
+import 'styles/index.scss';
 
 const router = createBrowserRouter([
   {
