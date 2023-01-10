@@ -8,6 +8,7 @@ interface SearchFormProps {
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ submitAction }) => {
+
     return (
         <form
             className='search-form '

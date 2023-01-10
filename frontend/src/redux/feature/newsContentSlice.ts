@@ -24,6 +24,10 @@ const fetchNewsContent = createAsyncThunk<{ newsContent: NewsContentData | null;
     }
 );
 
+const newsContentAsyncActions = {
+    fetchNewsContent
+};
+
 export const newsContentSlice = createSlice({
     name: 'newsContent',
     initialState,
@@ -48,5 +52,5 @@ export const newsContentSlice = createSlice({
 
 const selectNewsContent = (state: RootState) => state.newsContentState;
 
-export { selectNewsContent, fetchNewsContent };
+export { selectNewsContent, newsContentAsyncActions };
 export default newsContentSlice.reducer;

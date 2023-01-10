@@ -7,8 +7,7 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 import { removeContentCharInfo, timeModifier } from '../../utils/utils';
 import useNewsFeed from '../../hooks/useNewsFeed';
 
-import type { GetQueryParamsObj, News } from '../../utils/types';
-import type { GenericCommonActionType } from '../../redux/app/configureStore';
+import type { GetQueryParamsObj } from '../../utils/types';
 import '../../styles/newsFeeds.scss';
 
 interface NewsFeedsListProps { }

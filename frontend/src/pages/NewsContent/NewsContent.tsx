@@ -1,34 +1,25 @@
 import React, { useEffect, useMemo } from 'react';
 import { useLocation } from "react-router-dom";
+import useNewsContent from '../../hooks/useNewsContent';
 
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { getFirstPhrase } from '../../utils/utils';
 
 import '../../styles/newsContent.scss';
-import type { NewsContentData } from '../../utils/types';
-import type { GenericCommonActionType } from '../../redux/app/configureStore';
 
-interface NewsContentProps {
-    isFetching: boolean;
-    newsContent: NewsContentData | null;
-    fetchNewsContentAction: GenericCommonActionType;
-}
+interface NewsContentProps { }
 
-const NewsContent: React.FC<NewsContentProps> = ({
-    isFetching,
-    newsContent,
-    fetchNewsContentAction,
-}) => {
+const NewsContent: React.FC<NewsContentProps> = () => {
     const _location = useLocation();
     const { contentUrl, contentImgUrl, publishedAt } = _location.state;
+    const { isFetching, newsContent, fetchNewsContent } = useNewsContent();
+    // get first string of text content
+    const [firstPhrase, content] = useMemo(() => getFirstPhrase(newsContent), [newsContent]);
 
     useEffect(() => {
         if (!contentUrl) return;
-        fetchNewsContentAction({ contentUrl });
+        fetchNewsContent({ contentUrl });
     }, []);
-
-    // get first string of text content
-    const [firstPhrase, content] = useMemo(() => getFirstPhrase(newsContent), [newsContent]);
 
     if (!contentUrl) return (<div> Something wrong with loading content..... </div>);
 
