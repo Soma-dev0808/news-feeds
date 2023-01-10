@@ -30,12 +30,9 @@ export const newsListSlice = createSlice({
     name: 'newsList',
     initialState,
     reducers: {
-        toggleSearchForm: (state, action: PayloadAction<boolean | undefined>) => {
-            if (!action.payload) state.isSearchFormOpen = !state.isSearchFormOpen;
-            else {
-                state.isSearchFormOpen = action.payload;
-            }
-        },
+        toggleSearchForm: (state) => {
+            state.isSearchFormOpen = !state.isSearchFormOpen;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -43,6 +40,7 @@ export const newsListSlice = createSlice({
                 state.isFetching = true;
                 state.newsList = [];
                 state.error = null;
+                state.isSearchFormOpen = false;
             })
             .addCase(fetchNewsList.fulfilled, (state, action) => {
                 state.isFetching = false;

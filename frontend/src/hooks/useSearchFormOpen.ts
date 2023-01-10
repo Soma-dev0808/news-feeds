@@ -6,8 +6,8 @@ const useSearchFormOpen = () => {
     const dispatch = useAppDispatch();
     const { isSearchFormOpen } = useAppSelector(selectNewsList);
 
-    const toggleSearchForm = useCallback((isOpen?: boolean) => {
-        dispatch(newsListReducerActions.toggleSearchForm(isOpen));
+    const toggleSearchForm = useCallback(() => {
+        dispatch(newsListReducerActions.toggleSearchForm());
     }, [dispatch]);
 
     return { isSearchFormOpen, toggleSearchForm };

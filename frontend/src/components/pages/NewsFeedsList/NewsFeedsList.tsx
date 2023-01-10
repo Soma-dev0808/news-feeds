@@ -42,7 +42,6 @@ const NewsFeedsList: React.FC<NewsFeedsListProps> = () => {
     };
 
     const execNewsFetch = useCallback((searchParamObj: GetQueryParamsObj) => {
-        toggleSearchForm(false);
         fetchNewsList(searchParamObj);
     }, [isSearchFormOpen]);
 
