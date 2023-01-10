@@ -1,5 +1,5 @@
-import { AppDispatch } from "../app/configureStore";
-import { fetchNewsContent } from "../feature/newsContentSlice";
+import { AppDispatch } from "../redux/app/configureStore";
+import { fetchNewsContent } from "../redux/feature/newsContentSlice";
 
 import type { GetQueryParamsObj } from "../utils/types";
 

@@ -5,25 +5,19 @@ import NewsFeedsItem from '../../components/NewsFeedsItem';
 import SearchForm from '../../components/SearchForm';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { removeContentCharInfo, timeModifier } from '../../utils/utils';
+import useNewsFeed from '../../hooks/useNewsFeed';
 
 import type { GetQueryParamsObj, News } from '../../utils/types';
-import type { GenericCommonActionType } from '../../app/configureStore';
+import type { GenericCommonActionType } from '../../redux/app/configureStore';
 import '../../styles/newsFeeds.scss';
 
-interface NewsFeedsListProps {
-    isFetching: boolean,
-    newsList: News[] | null,
-    fetchNewsListAction: GenericCommonActionType,
-}
+interface NewsFeedsListProps { }
 
-const NewsFeedsList: React.FC<NewsFeedsListProps> = ({
-    isFetching,
-    newsList,
-    fetchNewsListAction,
-}) => {
+const NewsFeedsList: React.FC<NewsFeedsListProps> = () => {
     const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
     const _location = useLocation();
     const navigate = useNavigate();
+    const { isFetching, newsList, fetchNewsList } = useNewsFeed();
 
     const searchCond = _location?.state?.searchCond;
 
@@ -49,7 +43,7 @@ const NewsFeedsList: React.FC<NewsFeedsListProps> = ({
 
     const execNewsFetch = useCallback((searchParamObj: GetQueryParamsObj) => {
         setIsSearchOpen(false);
-        fetchNewsListAction(searchParamObj);
+        fetchNewsList(searchParamObj);
     }, [isSearchOpen]);
 
     const handleSearchFormOpen = () => setIsSearchOpen(prev => !prev);

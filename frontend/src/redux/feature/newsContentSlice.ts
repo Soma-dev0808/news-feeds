@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../app/configureStore';
-import { fetchNewsContent as _fetchNewsContent } from '../services/newsService';
+import { backend } from '../../repositories';
 
-import type { NewsContentData, GetQueryParamsObj } from '../utils/types';
+import type { NewsContentData, GetQueryParamsObj } from '../../utils/types';
 
 interface NewsContentState {
     isFetching: boolean,
@@ -19,7 +19,7 @@ const initialState: NewsContentState = {
 const fetchNewsContent = createAsyncThunk<{ newsContent: NewsContentData | null; }, { searchParamObj: GetQueryParamsObj; }>(
     'newsContent/FetchNewsContent',
     async ({ searchParamObj }) => {
-        const res = await _fetchNewsContent(searchParamObj);
+        const res = await backend.news.fetchNewsContent(searchParamObj);
         return { newsContent: res.newsContent };
     }
 );

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from "../../app/configureStore";
+import { AppDispatch, RootState } from "../../redux/app/configureStore";
 import NewsContent from "./NewsContent";
 import * as NewsContentActions from '../../actions/newsContentActions';
 

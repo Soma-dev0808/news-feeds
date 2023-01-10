@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../app/configureStore';
-import { fetchNews } from '../services/newsService';
+import { backend } from '../../repositories';
 
-import type { GetQueryParamsObj, News } from '../utils/types';
+import type { GetQueryParamsObj, News } from '../../utils/types';
 
 interface NewsListState {
     isFetching: boolean,
@@ -19,11 +19,12 @@ const initialState: NewsListState = {
 const fetchNewsList = createAsyncThunk<{ newsList: News[]; }, { searchParamObj: GetQueryParamsObj; }>(
     'newsList/FetchNewsList',
     async ({ searchParamObj }) => {
-        const res = await fetchNews(searchParamObj);
+        const res = await backend.news.fetchNews(searchParamObj);
         return { newsList: res.articles };
     }
 );
 
+const newsListAsyncActions = { fetchNewsList };
 
 export const newsListSlice = createSlice({
     name: 'newsList',
@@ -49,5 +50,5 @@ export const newsListSlice = createSlice({
 
 const selectNewsList = (state: RootState) => state.newsListState;
 
-export { selectNewsList, fetchNewsList };
+export { selectNewsList, newsListAsyncActions };
 export default newsListSlice.reducer;

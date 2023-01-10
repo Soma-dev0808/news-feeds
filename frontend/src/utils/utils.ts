@@ -1,4 +1,4 @@
-import type { GetQueryParamsObj } from "./types";
+import type { GetQueryParamsObj, NewsContentData, NewsFetchResult } from "./types";
 
 const getQueryParams = (obj: GetQueryParamsObj): string => {
     return Object.keys(obj).reduce((prev: string[], key: string) => {
@@ -41,9 +41,25 @@ const removeContentCharInfo = (content?: string): string => {
     return content.replace(str, '');
 };
 
+const getFirstPhrase = (newsContent: NewsContentData | null) => {
+    if (!newsContent) return [];
+    const _firstPhrase = newsContent.textContent.split(' ')[0];
+    return [_firstPhrase, newsContent.textContent.replace(_firstPhrase, '')];
+};
+
+// helper for mocking news feed api
+const mockNewsFeeds = () => new Promise<NewsFetchResult>((res) => setTimeout(() => {
+    res({
+        status: 'ok',
+        articles: [],
+        totalResults: 0,
+    });
+}, 500));
+
 export {
     getQueryParams,
     getToday,
     timeModifier,
-    removeContentCharInfo
+    removeContentCharInfo,
+    getFirstPhrase
 };

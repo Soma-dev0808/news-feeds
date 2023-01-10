@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation } from "react-router-dom";
-import { fetchNewsContent } from '../../services/newsService';
 
 import LoadingIndicator from '../../components/LoadingIndicator';
+import { getFirstPhrase } from '../../utils/utils';
 
 import '../../styles/newsContent.scss';
 import type { NewsContentData } from '../../utils/types';
-import type { GenericCommonActionType } from '../../app/configureStore';
+import type { GenericCommonActionType } from '../../redux/app/configureStore';
 
 interface NewsContentProps {
     isFetching: boolean;
@@ -28,11 +28,7 @@ const NewsContent: React.FC<NewsContentProps> = ({
     }, []);
 
     // get first string of text content
-    const [firstPhrase, content] = useMemo(() => {
-        if (!newsContent) return [];
-        const _firstPhrase = newsContent.textContent.split(' ')[0];
-        return [_firstPhrase, newsContent.textContent.replace(_firstPhrase, '')];
-    }, [newsContent]);
+    const [firstPhrase, content] = useMemo(() => getFirstPhrase(newsContent), [newsContent]);
 
     if (!contentUrl) return (<div> Something wrong with loading content..... </div>);
 
