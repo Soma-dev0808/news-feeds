@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'redux/app/hook';
 import { selectNewsList, newsListReducerActions } from 'redux/feature/newsListSlice';
 

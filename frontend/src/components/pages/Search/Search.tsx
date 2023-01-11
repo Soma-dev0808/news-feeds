@@ -1,7 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import SearchForm from 'components/models/search/SearchForm';
 
-const Search = () => {
+interface SearchProps {
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+interface SearchContainerProps { }
+
+const Search: React.FC<SearchProps> = ({
+    handleSubmit
+}) => (
+    <div className='search-page-container'>
+        <div className='search-page-form'>
+            <SearchForm submitAction={handleSubmit} />
+        </div>
+    </div>
+);
+
+const SearchContainer = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,13 +39,7 @@ const Search = () => {
         });
     };
 
-    return (
-        <div className='search-page-container'>
-            <div className='search-page-form'>
-                <SearchForm submitAction={handleSubmit} />
-            </div>
-        </div>
-    );
+    return <Search handleSubmit={handleSubmit} />;
 };
 
-export default Search;
+export default SearchContainer;
