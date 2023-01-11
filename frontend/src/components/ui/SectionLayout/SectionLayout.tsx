@@ -4,12 +4,10 @@ interface SectionLayoutProps {
     component: React.ElementType;
 }
 
-const SectionLayout: React.FC<SectionLayoutProps> = ({ component: Component }) => {
-    return (
-        <div className='section-layout'>
-            <Component />
-        </div>
-    );
-};
+const SectionLayout: React.FC<SectionLayoutProps> = ({ component: Component }) => (
+    <div className='section-layout'>
+        <Component />
+    </div>
+);
 
 export default SectionLayout;

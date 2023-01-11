@@ -10,11 +10,56 @@ import NewsFeedListSubContents from 'components/models/newsFeedList/NewsFeedList
 import { SearchFormCloseButton, SearchFormOpenButton } from 'components/models/newsFeedList/NewsFeedListButtons';
 import { removeContentCharInfo, timeModifier } from 'utils/utils';
 
-import type { GetQueryParamsObj } from 'utils/types';
+import type { GetQueryParamsObj, News } from 'utils/types';
 
-interface NewsFeedsListProps { }
+interface NewsFeedsListProps {
+    isSearchFormOpen: boolean;
+    handleSearchFormOpen: () => void;
+    handleSearchClick: (e: React.FormEvent<HTMLFormElement>) => void;
+    isFetching: boolean;
+    newsList: News[] | null;
+}
 
-const NewsFeedsList: React.FC<NewsFeedsListProps> = () => {
+interface NewsFeedsListContainerProps { }
+
+const NewsFeedsList: React.FC<NewsFeedsListProps> = ({
+    isSearchFormOpen,
+    handleSearchFormOpen,
+    handleSearchClick,
+    isFetching,
+    newsList
+}) => (
+    <div className='news-feed'>
+        <div className={`news-feed-search-form ${isSearchFormOpen && 'formactive'}`}>
+            <SearchFormCloseButton handleSearchFormOpen={handleSearchFormOpen} />
+            <SearchForm submitAction={handleSearchClick} />
+        </div>
+
+        <SearchFormOpenButton handleSearchFormOpen={handleSearchFormOpen} />
+
+        {isFetching
+            ? <LoadingIndicator isOverlay={false} />
+            : <>
+                <NewsFeedListSubContents newsList={newsList} />
+                <ul className='news-feed-list'>
+                    {
+                        newsList?.map((nf, idx) => (
+                            <NewsFeedsItem
+                                key={idx}
+                                {...nf}
+                                publishedAt={timeModifier(nf.publishedAt)}
+                                content={removeContentCharInfo(nf.content)}
+                            />
+                        ))
+                    }
+                </ul>
+            </>
+        }
+
+    </div>
+);
+
+const NewsFeedsListContainer: React.FC<NewsFeedsListContainerProps> = () => {
     const _location = useLocation();
     const navigate = useNavigate();
     const { isSearchFormOpen, toggleSearchForm } = useSearchFormOpen();
@@ -47,36 +92,13 @@ const NewsFeedsList: React.FC<NewsFeedsListProps> = () => {
 
     const handleSearchFormOpen = () => toggleSearchForm();
 
-    return (
-        <div className='news-feed'>
-            <div className={`news-feed-search-form ${isSearchFormOpen && 'formactive'}`}>
-                <SearchFormCloseButton handleSearchFormOpen={handleSearchFormOpen} />
-                <SearchForm submitAction={handleSearchClick} />
-            </div>
-
-            <SearchFormOpenButton handleSearchFormOpen={handleSearchFormOpen} />
-
-            {isFetching
-                ? <LoadingIndicator isOverlay={false} />
-                : <>
-                    <NewsFeedListSubContents newsList={newsList} />
-                    <ul className='news-feed-list'>
-                        {
-                            newsList?.map((nf, idx) => (
-                                <NewsFeedsItem
-                                    key={idx}
-                                    {...nf}
-                                    publishedAt={timeModifier(nf.publishedAt)}
-                                    content={removeContentCharInfo(nf.content)}
-                                />
-                            ))
-                        }
-                    </ul>
-                </>
-            }
-
-        </div>
-    );
+    return <NewsFeedsList
+        isSearchFormOpen={isSearchFormOpen}
+        handleSearchFormOpen={handleSearchFormOpen}
+        handleSearchClick={handleSearchClick}
+        isFetching={isFetching}
+        newsList={newsList}
+    />;
 };
 
-export default NewsFeedsList;
+export default NewsFeedsListContainer;
